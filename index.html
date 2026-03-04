@@ -57,4 +57,33 @@
         <h3 style="margin-top: 0; color: #333;">ℹ️ 核心規格與特性</h3>
         <div style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
             <p style="margin: 5px 0;"><strong>產品名稱：</strong> PET 0.25 防霧膠簾組</p>
-            <p style="margin: 5px 0;"><strong>基材材質：</strong> 聚對苯二甲酸乙
+            <p style="margin: 5px 0;"><strong>基材材質：</strong> 聚對苯二甲酸乙二酯 (PET)</p>
+            <p style="margin: 5px 0;"><strong>厚度規格：</strong> 0.25mm</p>
+        </div>
+        <h4 style="margin-bottom: 10px;">✅ 產品優勢</h4>
+        <ul style="padding-left: 20px;">
+            <li style="margin-bottom: 8px;"><strong>卓越防霧效果：</strong> 透過親水性塗層技術，有效防止水氣凝結，確保在高濕度或溫差大的環境下保持清晰。</li>
+            <li style="margin-bottom: 8px;"><strong>高光學透明度：</strong> 結合特殊塗層，保證了極高的透光率和極低的霧度。</li>
+            <li style="margin-bottom: 8px;"><strong>耐刮擦與耐磨損：</strong> 表面防霧層具備一定硬度，能有效抵抗日常使用中的輕微刮擦。</li>
+            <li style="margin-bottom: 8px;"><strong>環境適應性廣泛：</strong> 環保無毒材質，且於不同溫度範圍內均能保持穩定的防霧性能。</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // 切換分頁的邏輯演算法
+    function switchTab(evt, tabId) {
+        // 隱藏所有內容區塊
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        // 取消所有按鈕的選取狀態
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // 顯示被點擊的內容區塊
+        document.getElementById(tabId).classList.add('active');
+        // 將被點擊的按鈕標記為 active (變色)
+        evt.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
