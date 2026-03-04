@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET 0.25 防霧膠簾組 - 產品資訊導覽</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f9f9f9; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        
+        /* 導覽列按鈕設計 */
+        .tabs { display: flex; justify-content: space-between; border-bottom: 2px solid #ddd; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 10px; border: none; background: none; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .tab-btn:hover { background-color: #f0f0f0; }
+        .tab-btn.active { border-bottom: 3px solid #007bff; color: #007bff; font-weight: bold; }
+        
+        /* 內容區塊隱藏與顯示 */
+        .tab-content { display: none; line-height: 1.6; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* 影片嵌入容器 (RWD 自適應手機螢幕) */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 15px; border-radius: 5px;}
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        /* PDF 嵌入容器 (適應手機螢幕高度) */
+        .pdf-container { position: relative; width: 100%; height: 65vh; min-height: 400px; overflow: hidden; border-radius: 5px; border: 1px solid #ccc; }
+        .pdf-container iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(event, 'manual')">產品簡介</button>
+        <button class="tab-btn" onclick="switchTab(event, 'video')">教學影片</button>
+        <button class="tab-btn" onclick="switchTab(event, 'info')">產品資訊</button>
+    </div>
+
+    <div id="manual" class="tab-content active">
+        <h3 style="margin-top: 0; color: #333;">📖 產品簡介與規格書</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 10px;">（提示：可直接在下方滑動閱讀，或使用雙指縮放）</p>
+        <div class="pdf-container">
+            <iframe src="https://drive.google.com/file/d/1szLEdTqLrke_ukGnUZjjtvxOB530A1eE/preview" allow="autoplay"></iframe>
+        </div>
+    </div>
+
+    <div id="video" class="tab-content">
+        <h3 style="margin-top: 0; color: #333;">🎬 實際安裝與教學影片</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 10px;">點擊下方播放鍵觀看完整介紹：</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ljuYxi7dq3s?si=qQXVCtb2MeWQ8xKh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div id="info" class="tab-content">
+        <h3 style="margin-top: 0; color: #333;">ℹ️ 核心規格與特性</h3>
+        <div style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+            <p style="margin: 5px 0;"><strong>產品名稱：</strong> PET 0.25 防霧膠簾組</p>
+            <p style="margin: 5px 0;"><strong>基材材質：</strong> 聚對苯二甲酸乙
