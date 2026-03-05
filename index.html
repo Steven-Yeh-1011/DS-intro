@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PET 0.25 防霧膠簾組 - 產品資訊導覽</title>
     <style>
-        /* --- 新增的 Top Bar 樣式 --- */
+        /* --- 優化後的 Top Bar 樣式 --- */
         .top-bar {
             position: fixed; /* 固定在頂部 */
             top: 0;
@@ -28,9 +28,12 @@
         }
 
         .top-bar-logo {
-            height: 30px; /* 🔥 將 Logo 高度從 45px 縮小到 30px，並不夾雜全形空白 🔥 */
+            /* 🔥 修復關鍵：移除原本腰斬代碼中的 border-radius: 50% 🔥 */
+            height: 20px; /* 🔥 將縮小後的高度從 30px 調整得更小 (例如 20px)，以補償 padding 增加的高度，保持原本縮小後的視覺尺寸 🔥 */
             width: auto;
-            border-radius: 50%; /* 確保 Logo 保持圓形 (如果圖片本身不是圓形) */
+            /* background-color: white; */ /* 如果 Top Bar 是白色，可以移除此行以減少背景色疊加 */
+            /* padding: 5px; */ /* 🔥 新增內邊距，在矩形區域內創造留白，確保文字內容完整呈現且不貼邊 🔥 */
+            display: block; /* 確保 padding 正常運作 */
         }
 
         .company-name {
@@ -148,3 +151,4 @@
 
 </body>
 </html>
+
