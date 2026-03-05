@@ -5,69 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PET 0.25 防霧膠簾組 - 產品資訊導覽</title>
     <style>
-        /* --- 優化後的 Top Bar 樣式 --- */
+        /* --- 固定的 Top Bar 樣式 --- */
         .top-bar {
-            position: fixed; /* 固定在頂部 */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: white; /* 頂部欄背景顏色 */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加一點陰影 */
-            z-index: 1000; /* 確保在所有內容之上 */
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
             display: flex;
-            align-items: center; /* 垂直居中對齊 */
-            justify-content: space-between; /* 左右分開 Logo/名稱 和 電話 */
+            align-items: center;
+            justify-content: space-between;
             padding: 10px 20px;
-            box-sizing: border-box; /* 確保內邊距包含在寬度內 */
+            box-sizing: border-box;
         }
 
         .top-bar-left {
             display: flex;
             align-items: center;
-            gap: 15px; /* Logo 與名稱之間的間距 */
+            gap: 15px;
         }
 
         .top-bar-logo {
-            /* 🔥 修復關鍵：移除原本腰斬代碼中的 border-radius: 50% 🔥 */
-            height: 20px; /* 🔥 將縮小後的高度從 30px 調整得更小 (例如 20px)，以補償 padding 增加的高度，保持原本縮小後的視覺尺寸 🔥 */
+            height: 35px; /* 完美呈現 Logo 大小 */
             width: auto;
-            /* background-color: white; */ /* 如果 Top Bar 是白色，可以移除此行以減少背景色疊加 */
-            /* padding: 5px; */ /* 🔥 新增內邊距，在矩形區域內創造留白，確保文字內容完整呈現且不貼邊 🔥 */
-            display: block; /* 確保 padding 正常運作 */
+            object-fit: contain;
+            display: block;
         }
 
         .company-name {
             font-size: 18px;
             font-weight: bold;
             color: #333;
-            white-space: nowrap; /* 確保名稱不換行 */
+            white-space: nowrap;
         }
 
         .company-phone {
             font-size: 16px;
-            color: #007bff; /* 保持與按鈕一致的藍色 */
-            text-decoration: none; /* 移除超連結下劃線 */
+            color: #007bff;
+            text-decoration: none;
             font-weight: bold;
         }
 
         .company-phone:hover {
-            text-decoration: underline; /* 懸停時顯示下劃線 */
+            text-decoration: underline;
         }
         
-        /* --- 修改現有的 body 樣式 --- */
+        /* --- 網頁主體與排版 --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px; /* 保留原來的左右內邊距 */
-            padding-top: 85px; /* 🔥 關鍵調整：為固定的 Top Bar 預留空間，數值必須大於 Top Bar 的高度 🔥 */
+            padding: 20px;
+            padding-top: 85px; /* 預留給 Top Bar 的空間 */
             background-color: #f9f9f9;
         }
         
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+        }
         
-        /* 導覽列按鈕設計 */
+        /* --- 導覽列按鈕 --- */
         .tabs { display: flex; justify-content: space-between; border-bottom: 2px solid #ddd; margin-bottom: 20px; }
-        .tab-btn { flex: 1; padding: 10px; border: none; background: none; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .tab-btn { flex: 1; padding: 10px; border: none; background: none; font-size: 16px; cursor: pointer; transition: 0.3s; font-weight: 500; color: #555; }
         .tab-btn:hover { background-color: #f0f0f0; }
         .tab-btn.active { border-bottom: 3px solid #007bff; color: #007bff; font-weight: bold; }
         
@@ -76,13 +81,57 @@
         .tab-content.active { display: block; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 影片嵌入容器 (RWD 自適應手機螢幕) */
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 15px; border-radius: 5px;}
+        /* --- 橫式影片容器 (原本的教學影片) --- */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);}
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        
-        /* PDF 嵌入容器 (適應手機螢幕高度) */
-        .pdf-container { position: relative; width: 100%; height: 65vh; min-height: 400px; overflow: hidden; border-radius: 5px; border: 1px solid #ccc; }
-        .pdf-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* --- 🔥 新增：直式影片容器 (專為 Shorts 打造 9:16 滿版比例) 🔥 --- */
+        .shorts-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px; /* 控制手機端最大寬度，看起來更精緻 */
+            margin: 0 auto 15px auto;
+            aspect-ratio: 9 / 16; /* 直式比例核心 */
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .shorts-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- 產品特性卡片 UI 樣式 --- */
+        .info-card {
+            background: #e8f4fd;
+            padding: 15px;
+            border-left: 5px solid #007bff;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 15px;
+        }
+        .warning-card {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 5px solid #ffc107;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 15px;
+        }
+        .prohibit-list {
+            background: #fdf2f2;
+            padding: 15px 15px 15px 35px;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            color: #721c24;
+            margin-top: 10px;
+        }
+        .prohibit-list li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -97,53 +146,68 @@
 
 <div class="container">
     <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab(event, 'manual')">產品簡介</button>
-        <button class="tab-btn" onclick="switchTab(event, 'video')">教學影片</button>
-        <button class="tab-btn" onclick="switchTab(event, 'info')">產品資訊</button>
+        <button class="tab-btn active" onclick="switchTab(event, 'tab1')">安裝方式</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab2')">補貨方式</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab3')">產品特性</button>
     </div>
 
-    <div id="manual" class="tab-content active">
-        <h3 style="margin-top: 0; color: #333;">📖 產品簡介與規格書</h3>
-        <p style="font-size: 14px; color: #666; margin-bottom: 10px;">（提示：可直接在下方滑動閱讀，或使用雙指縮放）</p>
-        <div class="pdf-container">
-            <iframe src="https://drive.google.com/file/d/1szLEdTqLrke_ukGnUZjjtvxOB530A1eE/preview" allow="autoplay"></iframe>
+    <div id="tab1" class="tab-content active">
+        <h3 style="margin-top: 0; color: #333; text-align: center;">📲 快速安裝示範</h3>
+        <p style="font-size: 14px; color: #666; text-align: center; margin-bottom: 15px;">點擊下方影片觀看 60 秒極速安裝教學</p>
+        <div class="shorts-container">
+            <iframe src="https://www.youtube.com/embed/Aew6dBVYdCI" title="YouTube Shorts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 
-    <div id="video" class="tab-content">
-        <h3 style="margin-top: 0; color: #333;">🎬 實際安裝與教學影片</h3>
-        <p style="font-size: 14px; color: #666; margin-bottom: 10px;">點擊下方播放鍵觀看完整介紹：</p>
+    <div id="tab2" class="tab-content">
+        <h3 style="margin-top: 0; color: #333;">🎬 實際補貨教學影片</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 10px;">請參考以下標準補貨作業流程：</p>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/ljuYxi7dq3s?si=qQXVCtb2MeWQ8xKh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
 
-    <div id="info" class="tab-content">
-        <h3 style="margin-top: 0; color: #333;">ℹ️ 核心規格與特性</h3>
-        <div style="background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
-            <p style="margin: 5px 0;"><strong>產品名稱：</strong> PET 0.25 防霧膠簾組</p>
-            <p style="margin: 5px 0;"><strong>基材材質：</strong> 聚對苯二甲酸乙二酯 (PET)</p>
-            <p style="margin: 5px 0;"><strong>厚度規格：</strong> 0.25mm</p>
+    <div id="tab3" class="tab-content">
+        <h3 style="margin-top: 0; color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px;">✨ 產品特性與規範</h3>
+        
+        <div class="info-card">
+            <p style="margin: 0 0 10px 0; color: #0056b3;"><strong>🌟 特點：</strong><br>
+                <span style="color: #333;">節能，同時保有高透視度，不起霧，不影響銷售及補貨。</span>
+            </p>
+            <p style="margin: 0 0 10px 0; color: #0056b3;"><strong>🔧 安裝說明：</strong><br>
+                <span style="color: #333;">膠簾及掛勾橫桿。</span>
+            </p>
+            <p style="margin: 0; color: #0056b3;"><strong>📦 使用方式：</strong><br>
+                <span style="color: #333;">補貨時請將膠簾掛設到鄰近的機台。</span>
+            </p>
         </div>
-        <h4 style="margin-bottom: 10px;">✅ 產品優勢</h4>
-        <ul style="padding-left: 20px;">
-            <li style="margin-bottom: 8px;"><strong>卓越防霧效果：</strong> 透過親水性塗層技術，有效防止水氣凝結，確保在高濕度或溫差大的環境下保持清晰。</li>
-            <li style="margin-bottom: 8px;"><strong>高光學透明度：</strong> 結合特殊塗層，保證了極高的透光率和極低的霧度。</li>
-            <li style="margin-bottom: 8px;"><strong>耐刮擦與耐磨損：</strong> 表面防霧層具備一定硬度，能有效抵抗日常使用中的輕微刮擦。</li>
-            <li style="margin-bottom: 8px;"><strong>環境適應性廣泛：</strong> 環保無毒材質，且於不同溫度範圍內均能保持穩定的防霧性能。</li>
-        </ul>
+
+        <div class="warning-card">
+            <p style="margin: 0; color: #856404;">
+                <strong>⚠️ 注意事項：</strong><br>
+                膠簾受到外力拉扯或折彎，會產生不可逆的折痕，請務必輕柔操作。
+            </p>
+        </div>
+
+        <h4 style="margin: 20px 0 0 0; color: #d9534f; display: flex; align-items: center;">
+            <span style="font-size: 20px; margin-right: 5px;">🚫</span> 絕對禁止事項
+        </h4>
+        <ol class="prohibit-list">
+            <li>不得放置於地板</li>
+            <li>不得用力拉扯或踩踏</li>
+            <li>不得對折彎膠簾</li>
+            <li>不得撥向層架兩側</li>
+            <li>不得使用夾子等金屬製品對膠簾表面固定</li>
+        </ol>
     </div>
 </div>
 
 <script>
-    // 切換分頁的邏輯演算法
+    // 雅英專屬的閃電分頁切換演算法
     function switchTab(evt, tabId) {
-        // 隱藏所有內容
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-        // 移除所有按鈕的 active 狀態
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         
-        // 顯示點擊的內容，並標記按鈕
         document.getElementById(tabId).classList.add('active');
         evt.currentTarget.classList.add('active');
     }
@@ -151,4 +215,3 @@
 
 </body>
 </html>
-
